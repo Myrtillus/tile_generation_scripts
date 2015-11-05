@@ -36,7 +36,8 @@ BBOX="20.7305,59.7054,31.4811,65"  # oulu mukaan alueeseen
 # BBOX="23.77293,61.50659,23.93110,61.52932"
 
 
-STYLE="/home/nissiant/osm2pgsql_dumpperi/osm2pgsql_dumpperi_tyyli.style"
+#STYLE="/home/nissiant/osm2pgsql_dumpperi/osm2pgsql_dumpperi_tyyli.style"
+STYLE="/home/nissiant/Documents/Mapbox/project/osm2pgsql_style/pkk_maps.style"
 LOCALOSMFILE="${DOWNLOADS}/${OSMFILE}"
 sudo -u postgres osm2pgsql --cache-strategy sparse --bbox ${BBOX} --style ${STYLE} --database gis --username gisuser --slim ${LOCALOSMFILE}
 
