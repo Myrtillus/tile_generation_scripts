@@ -200,8 +200,8 @@ if __name__ == "__main__":
     # TALVIKUUKAUSINA
     # mapfile="/home/nissiant/mapnik-style/pkk_osm_style_summer_map_with_winter_paths.xml"
     # KESAKUUKAUSINA
-    mapfile="/home/nissiant/mapnik-style/pkk_osm_style_summer_map.xml"
-
+    #mapfile="/home/nissiant/mapnik-style/pkk_osm_style_summer_map.xml"
+    mapfile="/home/nissiant/Documents/Mapbox/project/openstreetmap-carto/openstreetmap-carto.xml"
     #try:
     #    tile_dir = os.environ['MAPNIK_TILE_DIR']
     #except KeyError:
