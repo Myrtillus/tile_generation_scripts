@@ -15,7 +15,7 @@ OSMURL="http://download.geofabrik.de/europe/${OSMFILE}"
 
 wget --waitretry=3 -N -P ${DOWNLOADS} ${OSMURL}
 
-# kanta myllays
+# kanta myllays, tuohtaan vanha kanta ja tehdaan kaikki alusta
 sudo -u postgres psql -c "DROP DATABASE gis;"
 sudo -u postgres createdb --encoding=UTF8 --owner=gisuser gis
 sudo -u postgres psql  gis< /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
@@ -35,7 +35,7 @@ sudo -u postgres osm2pgsql --cache-strategy sparse --bbox ${BBOX} --style ${STYL
 # - vaihda generate_tiles_summer.py tiedostosta oikea xml file käyttöön kesäkuukausille
 # ***************
 
-# lasketaan uudet tiilit hakemistoon /var/tmp/osm/tiles
+# lasketaan uudet tiilet hakemistoon /var/tmp/osm/tiles
 export MAPNIK_MAP_DIR="/var/tmp/osm/tiles"
 mkdir -p ${MAPNIK_MAP_DIR}
 chown postgres:postgres ${MAPNIK_MAP_DIR}
@@ -51,14 +51,14 @@ rm -rf ${MAPNIK_MAP_DIR}
 # TALVIKARTAT 
 # - merkkauksessa vain talvipolkujen tallautuvuus
 # ***************
-# lasketaan uudet tiilit hakemistoon /var/tmp/osm/tiles
+# lasketaan uudet tiilet hakemistoon /var/tmp/osm/tiles
 export MAPNIK_MAP_DIR="/var/tmp/osm/tiles_winter"
 mkdir -p ${MAPNIK_MAP_DIR}
 chown postgres:postgres ${MAPNIK_MAP_DIR}
 GENTILESPY="/usr/local/bin/generate_tiles_winter.py"
 
-# TALVIKARTAT KOMMENTOITU POIS 24.4.14
-# sudo -u postgres ${GENTILESPY}
+# TALVIKARTAT, aktivoitu 29.12.2015
+sudo -u postgres ${GENTILESPY}
 
 # siirrettaan uudet tiilet vanhojen paalle
 

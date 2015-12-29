@@ -230,11 +230,20 @@ if __name__ == "__main__":
     # oikea ylakulma 62.7816/31.4811
     # bbox = (20.7305 , 59.7054 , 31.4811 , 62.7816)
     bbox = (20.7305 , 59.7054 , 31.4811 , 68.000)
-    render_tiles(bbox, mapfile, tile_dir, 6, 9, "etela-suomi")
+    render_tiles(bbox, mapfile, tile_dir, 6, 9, "etela-Suomi")
 
-    # Tampere zoomitasoilla 10-16
+    # Lantinen suomi tasoilla 10-13
+    bbox = (21.6462 , 60.4163 , 26.1390 , 62.2436)
+    render_tiles(bbox, mapfile, tile_dir, 10, 13, "Lantinen-Suomi")
+
+    # Tampere zoomitasoilla 14-16
     bbox = (23.33505 , 61.21578 , 24.43142 , 61.59293)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Tampere")
+    render_tiles(bbox, mapfile, tile_dir, 14, 16, "Tampere")
+
+    # Nasijarven itapuolelle suorakaide
+    bbox = (23.7630 , 61.59293 , 24.43142 , 61.7922)
+    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Nassy itapuoli")
+
 
     # Oulun testialue 10-16
     bbox = (25.1024 , 64.8437 , 26.1111 , 65.2924)
