@@ -237,11 +237,11 @@ if __name__ == "__main__":
     render_tiles(bbox, mapfile, tile_dir, 10, 13, "Lantinen-Suomi")
 
     # Tampere zoomitasoilla 14-16
-    bbox = (23.33505 , 61.21578 , 24.43142 , 61.59293)
+    bbox = (23.33505 , 61.21578 , 24.44 , 61.59293)
     render_tiles(bbox, mapfile, tile_dir, 14, 16, "Tampere")
 
     # Nasijarven itapuolelle suorakaide
-    bbox = (23.7630 , 61.59293 , 24.43142 , 61.7922)
+    bbox = (23.7630 , 61.59293 , 24.44 , 61.97)
     render_tiles(bbox, mapfile, tile_dir, 10, 16, "Nassy itapuoli")
 
 
@@ -254,6 +254,10 @@ if __name__ == "__main__":
     render_tiles(bbox, mapfile, tile_dir, 10, 16, "Porvoo")
 
 
+
+
+
+    # EI NORMAALISTI LASKETETA
     # Pelkka Kaupin alue
     bbox = (23.77293 , 61.50659 , 23.93110 , 61.52932)
     # render_tiles(bbox, mapfile, tile_dir, 10, 16, "Kauppi")
