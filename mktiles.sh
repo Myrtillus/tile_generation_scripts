@@ -48,13 +48,17 @@ sudo -u postgres psql -d gis -c "GRANT ALL ON geometry_columns TO gisuser;"
 # Dumppaillaan eri alueet yksi kerrallaan postgis kantaan mukaan
 STYLE="/home/nissiant/Documents/Mapbox/project/osm2pgsql_style/pkk_maps.style"
 
-BBOX="22.8,61.18,25,61.97"  # Tampere, huomaa append
+BBOX="22.8,60.5,25,61.97"  # Tampere
 wget -O /var/tmp/osm/tampere.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
 
-BBOX="25.1024,64.8437,26.1111,65.2924"  # Oulu, huomaa append
+sleep 120
+
+BBOX="25.1024,64.8437,26.1111,65.2924"  # Oulu
 wget -O /var/tmp/osm/oulu.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
 
-BBOX="25.3000,60.2500,26.0000,60.5300"  # Porvoo, huomaa append
+sleep 120
+
+BBOX="25.3000,60.2500,26.0000,60.5300"  # Porvoo
 wget -O /var/tmp/osm/porvoo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
 
 # yhdistetaan eri osm fileet duplikaatti avainten poistamiseksi
