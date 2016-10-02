@@ -233,11 +233,11 @@ if __name__ == "__main__":
     render_tiles(bbox, mapfile, tile_dir, 6, 9, "etela-Suomi")
 
     # Lantinen suomi tasoilla 10-13
-    bbox = (21.6462 , 60.4163 , 26.1390 , 62.2436)
+    bbox = (21.6462 , 60.5 , 26.1390 , 62.2436)
     render_tiles(bbox, mapfile, tile_dir, 10, 13, "Lantinen-Suomi")
 
     # Tampere zoomitasoilla 14-16
-    bbox = (23.33505 , 61.21578 , 24.44 , 61.59293)
+    bbox = (23.0 , 61 , 24.44 , 61.59293)
     render_tiles(bbox, mapfile, tile_dir, 14, 16, "Tampere")
 
     # Nasijarven itapuolelle suorakaide
