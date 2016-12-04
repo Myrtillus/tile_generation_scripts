@@ -254,6 +254,10 @@ if __name__ == "__main__":
     render_tiles(bbox, mapfile, tile_dir, 10, 16, "Porvoo")
 
 
+    # Rovaniemenn testialue 10-16
+    bbox = (25.4005 , 66.4042 , 26.1474 , 66.6554)
+    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Rovaniemi")
+
 
 
 
