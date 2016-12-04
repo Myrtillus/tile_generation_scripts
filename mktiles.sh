@@ -61,6 +61,12 @@ sleep 120
 BBOX="25.3000,60.2500,26.0000,60.5300"  # Porvoo
 wget -O /var/tmp/osm/porvoo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
 
+
+sleep 120
+
+BBOX="25.4005,66.4042,26.1474,66.6554"  # Rovaniemi
+wget -O /var/tmp/osm/rovaniemi.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+
 # yhdistetaan eri osm fileet duplikaatti avainten poistamiseksi
 # http://forum.openstreetmap.org/viewtopic.php?id=23765
 
