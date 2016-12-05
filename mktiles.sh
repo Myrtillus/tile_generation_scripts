@@ -70,7 +70,7 @@ wget -O /var/tmp/osm/rovaniemi.osm "http://www.overpass-api.de/api/xapi_meta?*[b
 # yhdistetaan eri osm fileet duplikaatti avainten poistamiseksi
 # http://forum.openstreetmap.org/viewtopic.php?id=23765
 
-/home/nissiant/Garmin_OSM_TK_map/osmosis/bin/osmosis --rx /var/tmp/osm/tampere.osm --rx /var/tmp/osm/oulu.osm --rx /var/tmp/osm/porvoo.osm --rx /var/tmp/osm/rovaniemi.osm --merge --wx /var/tmp/osm/merged.osm
+/home/nissiant/Garmin_OSM_TK_map/osmosis/bin/osmosis --rx /var/tmp/osm/tampere.osm --rx /var/tmp/osm/oulu.osm --rx /var/tmp/osm/porvoo.osm --rx /var/tmp/osm/rovaniemi.osm --merge --merge --wx /var/tmp/osm/merged.osm
 
 # dumpataan osm data kantaan
 BBOX="20,60,30,70"  # Porvoo, huomaa append
