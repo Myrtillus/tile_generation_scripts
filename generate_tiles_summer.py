@@ -240,6 +240,10 @@ if __name__ == "__main__":
     bbox = (23.0 , 61 , 24.44 , 61.59293)
     render_tiles(bbox, mapfile, tile_dir, 14, 16, "Tampere")
 
+    # Ellivuori ja Sastamala 14-16
+    bbox = (22.8 , 61.2 , 23 , 61.5)
+    render_tiles(bbox, mapfile, tile_dir, 14, 16, "Ellivuori")
+
     # Nasijarven itapuolelle suorakaide
     bbox = (23.7630 , 61.59293 , 24.44 , 61.97)
     render_tiles(bbox, mapfile, tile_dir, 10, 16, "Nassy itapuoli")
@@ -253,15 +257,23 @@ if __name__ == "__main__":
     bbox = (25.3000 , 60.2500 , 26.0000 , 60.5300)
     render_tiles(bbox, mapfile, tile_dir, 10, 16, "Porvoo")
 
+    # Lahden testialue 10-16
+    bbox = (25.2987,60.9295,26.1767,61.2389)
+    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Lahti")
 
-    # Rovaniemenn testialue 10-16
-    bbox = (25.4005 , 66.4042 , 26.1474 , 66.6554)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Rovaniemi")
-
-
+    # Helvetinjarven kansallispuiston alue
+    bbox = (23.68,61.95,24.79,62.29)
+    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Helvetinjarvi" 
 
 
     # EI NORMAALISTI LASKETETA
+ 
+    # Rovaniemenn testialue 10-16
+    bbox = (25.4005 , 66.4042 , 26.1474 , 66.6554)
+    #render_tiles(bbox, mapfile, tile_dir, 10, 16, "Rovaniemi")
+
+
+
     # Pelkka Kaupin alue
     bbox = (23.77293 , 61.50659 , 23.93110 , 61.52932)
     # render_tiles(bbox, mapfile, tile_dir, 10, 16, "Kauppi")

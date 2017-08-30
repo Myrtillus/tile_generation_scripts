@@ -46,34 +46,41 @@ sudo -u postgres psql -d gis -c "GRANT ALL ON geometry_columns TO gisuser;"
 
 # HAETAAN ERI ALUEIDEN DATAT SUORAAN SERVERILTA, FINLAND DUMPPI LAKKASI TOIMIMASTA 16.7.2016
 # Dumppaillaan eri alueet yksi kerrallaan postgis kantaan mukaan
+
+# serverilistaus
+# http://wiki.openstreetmap.org/wiki/Overpass_API
+
 STYLE="/home/nissiant/Documents/Mapbox/project/osm2pgsql_style/pkk_maps.style"
 
-BBOX="22.8,60.5,25,61.97"  # Tampere
-wget -O /var/tmp/osm/tampere.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+BBOX="22.8,60.5,25,62.29"  # Tampere
+#wget -O /var/tmp/osm/tampere.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/tampere.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
-sleep 60
+sleep 120
 
 BBOX="25.1024,64.8437,26.1111,65.2924"  # Oulu
-wget -O /var/tmp/osm/oulu.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/oulu.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/oulu.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
-sleep 60
+sleep 120
 
 BBOX="25.3000,60.2500,26.0000,60.5300"  # Porvoo
-wget -O /var/tmp/osm/porvoo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/porvoo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/porvoo.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
+sleep 120
 
-sleep 60
-
-BBOX="25.4005,66.4042,26.1474,66.6554"  # Rovaniemi
-wget -O /var/tmp/osm/rovaniemi.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+BBOX="25.2987,60.9295,26.1767,61.2389" # Lahti
+#wget -O /var/tmp/osm/lahti.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/lahti.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
 # yhdistetaan eri osm fileet duplikaatti avainten poistamiseksi
 # http://forum.openstreetmap.org/viewtopic.php?id=23765
 
-/home/nissiant/Garmin_OSM_TK_map/osmosis/bin/osmosis --rx /var/tmp/osm/tampere.osm --rx /var/tmp/osm/oulu.osm --rx /var/tmp/osm/porvoo.osm --rx /var/tmp/osm/rovaniemi.osm --merge --merge --merge --wx /var/tmp/osm/merged.osm
+/home/nissiant/Garmin_OSM_TK_map/osmosis/bin/osmosis --rx /var/tmp/osm/tampere.osm --rx /var/tmp/osm/oulu.osm --rx /var/tmp/osm/porvoo.osm --rx /var/tmp/osm/lahti.osm --merge --merge --merge --wx /var/tmp/osm/merged.osm
 
 # dumpataan osm data kantaan
-BBOX="20,60,30,70"  # Porvoo, huomaa append
+BBOX="20,60,30,70"
 sudo -u postgres osm2pgsql --cache-strategy sparse --bbox ${BBOX} --style ${STYLE} --database gis --username gisuser --slim /var/tmp/osm/merged.osm
 
 # tuhotaan roikkumasta
