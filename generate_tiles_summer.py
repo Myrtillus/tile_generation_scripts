@@ -263,7 +263,7 @@ if __name__ == "__main__":
 
     # Helvetinjarven kansallispuiston alue
     bbox = (23.68,61.95,24.79,62.29)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Helvetinjarvi" 
+    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Helvetinjarvi")
 
 
     # EI NORMAALISTI LASKETETA
