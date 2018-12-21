@@ -235,7 +235,7 @@ if __name__ == "__main__":
 
     # Oulun testialue 10-16
     bbox = (25.1024 , 64.8437 , 26.1111 , 65.2924)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Oulu")
+    #render_tiles(bbox, mapfile, tile_dir, 10, 16, "Oulu")
 
 
     # Pelkka Kaupin alue

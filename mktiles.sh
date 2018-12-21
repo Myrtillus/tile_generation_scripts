@@ -53,31 +53,38 @@ sudo -u postgres psql -d gis -c "GRANT ALL ON geometry_columns TO gisuser;"
 STYLE="/home/nissiant/Documents/Mapbox/project/osm2pgsql_style/pkk_maps.style"
 
 BBOX="22.8,60.5,25,62.29"  # Tampere
-#wget -O /var/tmp/osm/tampere.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
-wget -O /var/tmp/osm/tampere.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/tampere.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/tampere.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
-sleep 120
+sleep 240
 
 BBOX="25.1024,64.8437,26.1111,65.2924"  # Oulu
-#wget -O /var/tmp/osm/oulu.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
-wget -O /var/tmp/osm/oulu.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/oulu.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/oulu.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
-sleep 120
+sleep 240
 
 BBOX="25.3000,60.2500,26.0000,60.5300"  # Porvoo
-#wget -O /var/tmp/osm/porvoo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
-wget -O /var/tmp/osm/porvoo.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/porvoo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/porvoo.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
 
-sleep 120
+sleep 240
 
 BBOX="25.2987,60.9295,26.1767,61.2389" # Lahti
-#wget -O /var/tmp/osm/lahti.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
-wget -O /var/tmp/osm/lahti.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
+wget -O /var/tmp/osm/lahti.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/lahti.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
+
+sleep 240
+
+BBOX="25.00368 , 61.17876 , 25.30402 , 61.37412" # Evo Lahden ylÃ¤puolella
+wget -O /var/tmp/osm/evo.osm "http://www.overpass-api.de/api/xapi_meta?*[bbox=${BBOX}]"
+#wget -O /var/tmp/osm/evo.osm "http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=${BBOX}]"
+
 
 # yhdistetaan eri osm fileet duplikaatti avainten poistamiseksi
 # http://forum.openstreetmap.org/viewtopic.php?id=23765
 
-/home/nissiant/Garmin_OSM_TK_map/osmosis/bin/osmosis --rx /var/tmp/osm/tampere.osm --rx /var/tmp/osm/oulu.osm --rx /var/tmp/osm/porvoo.osm --rx /var/tmp/osm/lahti.osm --merge --merge --merge --wx /var/tmp/osm/merged.osm
+/home/nissiant/Garmin_OSM_TK_map/osmosis/bin/osmosis --rx /var/tmp/osm/tampere.osm --rx /var/tmp/osm/oulu.osm --rx /var/tmp/osm/porvoo.osm --rx /var/tmp/osm/lahti.osm --rx /var/tmp/osm/evo.osm --merge --merge --merge --merge  --wx /var/tmp/osm/merged.osm
 
 # dumpataan osm data kantaan
 BBOX="20,60,30,70"
@@ -88,8 +95,6 @@ rm /var/tmp/osm/*.osm
 
 
 # KESARTAT 
-# -talvikuukausina valk. katkoviivalla talvipolut, muuten kaikki kesämerkkaukset
-# - vaihda generate_tiles_summer.py tiedostosta oikea xml file käyttöön kesäkuukausille
 # ***************
 
 # lasketaan uudet tiilet hakemistoon /var/tmp/osm/tiles
@@ -106,24 +111,25 @@ rm -rf ${MAPNIK_MAP_DIR}
 
 
 # talvikartat de-aktivoitu 5.4.2016
+# ***************************************
 
 # TALVIKARTAT 
 # - merkkauksessa vain talvipolkujen tallautuvuus
 # ***************
 # lasketaan uudet tiilet hakemistoon /var/tmp/osm/tiles
-#export MAPNIK_MAP_DIR="/var/tmp/osm/tiles_winter"
-#mkdir -p ${MAPNIK_MAP_DIR}
-#chown postgres:postgres ${MAPNIK_MAP_DIR}
-#GENTILESPY="/usr/local/bin/generate_tiles_winter.py"
+export MAPNIK_MAP_DIR="/var/tmp/osm/tiles_winter"
+mkdir -p ${MAPNIK_MAP_DIR}
+chown postgres:postgres ${MAPNIK_MAP_DIR}
+GENTILESPY="/usr/local/bin/generate_tiles_winter.py"
 
 # TALVIKARTAT, aktivoitu 29.12.2015
-#sudo -u postgres ${GENTILESPY}
+sudo -u postgres ${GENTILESPY}
 
 # siirrettaan uudet tiilet vanhojen paalle
 
-#PUBLISH_DIR=/var/www/tiles_winter
-#cp -a ${MAPNIK_MAP_DIR}/* ${PUBLISH_DIR}
-#rm -rf ${MAPNIK_MAP_DIR}
+PUBLISH_DIR=/var/www/tiles_winter
+cp -a ${MAPNIK_MAP_DIR}/* ${PUBLISH_DIR}
+rm -rf ${MAPNIK_MAP_DIR}
 
 
 

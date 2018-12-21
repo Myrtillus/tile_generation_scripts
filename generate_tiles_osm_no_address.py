@@ -201,14 +201,14 @@ if __name__ == "__main__":
     # mapfile="/home/nissiant/mapnik-style/pkk_osm_style_summer_map_with_winter_paths.xml"
     # KESAKUUKAUSINA
     #mapfile="/home/nissiant/mapnik-style/pkk_osm_style_summer_map.xml"
-    mapfile="/home/nissiant/Documents/Mapbox/project/openstreetmap-carto/openstreetmap-carto.xml"
+    mapfile="/home/nissiant/Documents/Mapbox/project/osm_no_address/osm_no_address.xml"
     #try:
     #    tile_dir = os.environ['MAPNIK_TILE_DIR']
     #except KeyError:
     #    tile_dir = home + "/osm/tiles/"
 
     #tile_dir = "/home/nissiant/tiles_tmp/"
-    tile_dir = "/var/tmp/osm/tiles"
+    tile_dir = "/var/tmp/osm_no_address/tiles"
 
 
     if not tile_dir.endswith('/'):
@@ -232,60 +232,13 @@ if __name__ == "__main__":
     bbox = (20.7305 , 59.7054 , 31.4811 , 68.000)
     render_tiles(bbox, mapfile, tile_dir, 6, 9, "etela-Suomi")
 
-    # Lantinen suomi tasoilla 10-13
-    bbox = (21.6462 , 60.5 , 26.1390 , 62.2436)
-    render_tiles(bbox, mapfile, tile_dir, 10, 13, "Lantinen-Suomi")
+    # Lantinen suomi tasoilla 10-11
+    bbox = (21.6462 , 60.4163 , 26.1390 , 62.2436)
+    render_tiles(bbox, mapfile, tile_dir, 10, 11, "Lantinen-Suomi")
 
-    # Tampere zoomitasoilla 14-16
-    bbox = (23.0 , 61 , 24.44 , 61.59293)
-    render_tiles(bbox, mapfile, tile_dir, 14, 16, "Tampere")
+    # Tampere zoomitasoilla 14-17
+    bbox = (23.33505 , 61.21578 , 24.43142 , 61.59293)
+    render_tiles(bbox, mapfile, tile_dir, 12, 17, "Tampere")
 
-    # Ellivuori ja Sastamala 14-16
-    bbox = (22.8 , 61.2 , 23 , 61.5)
-    render_tiles(bbox, mapfile, tile_dir, 14, 16, "Ellivuori")
-
-    # Nasijarven itapuolelle suorakaide
-    bbox = (23.7630 , 61.59293 , 24.44 , 61.97)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Nassy itapuoli")
-
-
-    # Oulun testialue 10-16
-    bbox = (25.1024 , 64.8437 , 26.1111 , 65.2924)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Oulu")
-
-    # Porvoon testialue 10-16
-    bbox = (25.3000 , 60.2500 , 26.0000 , 60.5300)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Porvoo")
-
-    # Lahden testialue 10-16
-    bbox = (25.2987,60.9295,26.1767,61.2389)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Lahti")
-
-
-    # Evonn testialue 10-16
-    bbox = (25.00368 , 61.17876 , 25.30402 , 61.37412)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Lahti")
-
-
-    # Helvetinjarven kansallispuiston alue
-    bbox = (23.68,61.95,24.79,62.29)
-    render_tiles(bbox, mapfile, tile_dir, 10, 16, "Helvetinjarvi")
-
-
-    # EI NORMAALISTI LASKETETA
- 
-    # Rovaniemenn testialue 10-16
-    bbox = (25.4005 , 66.4042 , 26.1474 , 66.6554)
-    #render_tiles(bbox, mapfile, tile_dir, 10, 16, "Rovaniemi")
-
-
-
-    # Pelkka Kaupin alue
-    bbox = (23.77293 , 61.50659 , 23.93110 , 61.52932)
-    # render_tiles(bbox, mapfile, tile_dir, 10, 16, "Kauppi")
-    
-    # Jyvaskyla laajavuoren ymparisto
-    bbox = (25.57041 , 62.20433 , 25.86229 , 62.31886)
-    #render_tiles(bbox, mapfile, tile_dir, 10, 17, "Jyvaskyla")
 
 
